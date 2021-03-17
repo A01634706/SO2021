@@ -20,12 +20,14 @@ main(void)
   dup(0);  // stderr
 
   for(;;){
-    printf(1, "init: starting sh\n");
+    printf(1, "Bienvenido sh\n");
     pid = fork();
     if(pid < 0){
       printf(1, "init: fork failed\n");
       exit();
     }
+	//al cambiarlo a ls se corria infinitamente y desplegaba las opciones
+	//al poner nohayprograma se muestra el init: exec sh failed infinitas veces y exec:fail
     if(pid == 0){
       exec("sh", argv);
       printf(1, "init: exec sh failed\n");
